@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <style>
+    .st0{fill:#6C63FF;}
+    .st1{fill:#F2F2F2;}
+    .st2{fill:#3F3D56;}
+    .st3{fill:#FFFFFF;}
+    .st4{fill:#E6E6E6;}
+    .st5{fill:#FF6584;}
+    .st6{opacity:0.1;}
+  </style>
+  
+  <!-- Background elements -->
+  <circle class="st1" cx="450" cy="200" r="80"/>
+  <circle class="st5" cx="150" cy="100" r="30" opacity="0.5"/>
+  <circle class="st0" cx="490" cy="80" r="15" opacity="0.5"/>
+  
+  <!-- Main AI Robot -->
+  <g transform="translate(300, 220)">
+    <!-- Robot Head -->
+    <rect class="st2" x="-50" y="-100" width="100" height="90" rx="10"/>
+    <rect class="st3" x="-40" y="-90" width="80" height="70" rx="5"/>
+    
+    <!-- Robot Eyes -->
+    <circle class="st0" cx="-20" cy="-65" r="10"/>
+    <circle class="st0" cx="20" cy="-65" r="10"/>
+    <circle class="st3" cx="-17" cy="-68" r="3"/>
+    <circle class="st3" cx="23" cy="-68" r="3"/>
+    
+    <!-- Robot Mouth -->
+    <rect class="st0" x="-25" y="-40" width="50" height="5" rx="2"/>
+    
+    <!-- Robot Body -->
+    <rect class="st2" x="-40" y="-10" width="80" height="100" rx="10"/>
+    <rect class="st4" x="-30" y="0" width="60" height="80" rx="5"/>
+    
+    <!-- Robot Control Panel -->
+    <circle class="st0" cx="0" cy="20" r="10"/>
+    <circle class="st5" cx="-15" cy="40" r="5"/>
+    <circle class="st5" cx="15" cy="40" r="5"/>
+    <rect class="st0" x="-20" y="55" width="40" height="5" rx="2"/>
+    <rect class="st0" x="-20" y="65" width="40" height="5" rx="2"/>
+    
+    <!-- Robot Arms -->
+    <rect class="st2" x="-60" y="0" width="20" height="60" rx="5"/>
+    <rect class="st2" x="40" y="0" width="20" height="60" rx="5"/>
+    <circle class="st2" cx="-50" cy="70" r="10"/>
+    <circle class="st2" cx="50" cy="70" r="10"/>
+    
+    <!-- Robot Legs -->
+    <rect class="st2" x="-30" y="90" width="20" height="40" rx="5"/>
+    <rect class="st2" x="10" y="90" width="20" height="40" rx="5"/>
+    <rect class="st2" x="-35" y="130" width="30" height="10" rx="3"/>
+    <rect class="st2" x="5" y="130" width="30" height="10" rx="3"/>
+  </g>
+  
+  <!-- Digital Elements -->
+  <g class="st6">
+    <circle class="st0" cx="100" cy="200" r="5"/>
+    <circle class="st0" cx="120" cy="220" r="5"/>
+    <circle class="st0" cx="140" cy="240" r="5"/>
+    <circle class="st0" cx="160" cy="260" r="5"/>
+    <circle class="st0" cx="180" cy="280" r="5"/>
+    <line class="st0" x1="100" y1="200" x2="180" y2="280" stroke="#6C63FF" stroke-width="2"/>
+  </g>
+  
+  <g class="st6">
+    <circle class="st0" cx="500" cy="200" r="5"/>
+    <circle class="st0" cx="480" cy="220" r="5"/>
+    <circle class="st0" cx="460" cy="240" r="5"/>
+    <circle class="st0" cx="440" cy="260" r="5"/>
+    <circle class="st0" cx="420" cy="280" r="5"/>
+    <line class="st0" x1="500" y1="200" x2="420" y2="280" stroke="#6C63FF" stroke-width="2"/>
+  </g>
+  
+  <!-- Binary Code Background -->
+  <text x="50" y="50" font-family="monospace" font-size="10" fill="#6C63FF" opacity="0.2">10110101</text>
+  <text x="150" y="70" font-family="monospace" font-size="10" fill="#6C63FF" opacity="0.2">01001010</text>
+  <text x="250" y="40" font-family="monospace" font-size="10" fill="#6C63FF" opacity="0.2">11100111</text>
+  <text x="350" y="60" font-family="monospace" font-size="10" fill="#6C63FF" opacity="0.2">00101101</text>
+  <text x="450" y="30" font-family="monospace" font-size="10" fill="#6C63FF" opacity="0.2">10011001</text>
+  
+  <text x="70" y="350" font-family="monospace" font-size="10" fill="#6C63FF" opacity="0.2">01110010</text>
+  <text x="170" y="330" font-family="monospace" font-size="10" fill="#6C63FF" opacity="0.2">10001000</text>
+  <text x="270" y="370" font-family="monospace" font-size="10" fill="#6C63FF" opacity="0.2">11010110</text>
+  <text x="370" y="340" font-family="monospace" font-size="10" fill="#6C63FF" opacity="0.2">00111001</text>
+  <text x="470" y="360" font-family="monospace" font-size="10" fill="#6C63FF" opacity="0.2">10100101</text>
+</svg>
