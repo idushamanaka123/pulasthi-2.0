@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator | AI Agent</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/image-generator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><h1>AI<span>Agent</span></h1></a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="text-generator.html">Text AI</a></li>
+                    <li><a href="image-generator.html" class="active">Image AI</a></li>
+                    <li class="user-dropdown logged-in" style="display: none;">
+                        <a href="#" class="user-menu">
+                            <img src="images/default-avatar.png" alt="User" class="user-avatar">
+                            <span class="user-name">User</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                    <li class="logged-out" style="display: none;"><a href="login.html">Login</a></li>
+                    <li class="logged-out" style="display: none;"><a href="register.html" class="btn btn-primary btn-sm">Sign Up</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero image-gen-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI <span class="highlight">Image Generator</span></h1>
+                <p>Create stunning AI-generated images from text descriptions using advanced AI models.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-generator">
+        <div class="container">
+            <div class="generator-container">
+                <div class="input-panel">
+                    <h2>Create Your Image</h2>
+                    <div class="prompt-container">
+                        <label for="image-prompt">Describe the image you want to create:</label>
+                        <textarea id="image-prompt" placeholder="A futuristic city with flying cars and neon lights, cyberpunk style, detailed, 8k resolution" rows="4"></textarea>
+                        <div class="prompt-suggestions">
+                            <h3>Prompt Suggestions</h3>
+                            <div class="suggestion-tags">
+                                <span class="suggestion-tag" data-suggestion="cyberpunk city">Cyberpunk City</span>
+                                <span class="suggestion-tag" data-suggestion="fantasy landscape">Fantasy Landscape</span>
+                                <span class="suggestion-tag" data-suggestion="space nebula">Space Nebula</span>
+                                <span class="suggestion-tag" data-suggestion="underwater scene">Underwater Scene</span>
+                                <span class="suggestion-tag" data-suggestion="steampunk machinery">Steampunk</span>
+                                <span class="suggestion-tag" data-suggestion="digital art portrait">Digital Portrait</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="options-container">
+                        <div class="option-group">
+                            <label for="image-model">AI Model:</label>
+                            <select id="image-model">
+                                <option value="prompthero-openjourney">🚀 OpenJourney (Midjourney Style)</option>
+                                <option value="stable-diffusion">🎯 Stable Diffusion</option>
+                                <option value="midjourney">⚡ Midjourney Style</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="image-ratio">Aspect Ratio:</label>
+                            <select id="image-ratio">
+                                <option value="1:1">Square (1:1)</option>
+                                <option value="16:9">Landscape (16:9)</option>
+                                <option value="9:16">Portrait (9:16)</option>
+                                <option value="4:3">Standard (4:3)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="style-tags">
+                        <h3>Style Tags</h3>
+                        <div class="tags-container">
+                            <span class="style-tag" data-style="photorealistic">Photorealistic</span>
+                            <span class="style-tag" data-style="digital art">Digital Art</span>
+                            <span class="style-tag" data-style="oil painting">Oil Painting</span>
+                            <span class="style-tag" data-style="watercolor">Watercolor</span>
+                            <span class="style-tag" data-style="anime">Anime</span>
+                            <span class="style-tag" data-style="3D render">3D Render</span>
+                            <span class="style-tag" data-style="concept art">Concept Art</span>
+                            <span class="style-tag" data-style="cinematic">Cinematic</span>
+                            <span class="style-tag" data-style="8k resolution">8K Resolution</span>
+                            <span class="style-tag" data-style="detailed">Detailed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="generate-image" class="btn btn-primary">Generate Image</button>
+                        <button id="clear-prompt" class="btn btn-secondary">Clear</button>
+                    </div>
+                </div>
+                
+                <div class="output-panel">
+                    <h2>Generated Image</h2>
+                    <div class="image-preview-container">
+                        <div id="image-output" class="image-preview">
+                            <div class="placeholder-image">
+                                <i class="fas fa-image"></i>
+                                <p>Your generated image will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="output-actions">
+                        <button id="download-image" class="btn btn-primary" disabled>
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button id="save-favorite" class="btn btn-secondary logged-in" style="display: none;">
+                            <i class="fas fa-heart"></i> Save to Favorites
+                        </button>
+                        <button id="share-image" class="btn btn-secondary">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
+                    
+                    <div class="image-info">
+                        <div class="info-item">
+                            <span class="info-label">Prompt:</span>
+                            <span id="output-prompt" class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Model:</span>
+                            <span id="output-model" class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Generated:</span>
+                            <span id="output-time" class="info-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recent-generations logged-in" style="display: none;">
+                <h2>Your Recent Generations</h2>
+                <div class="generations-grid" id="recent-generations">
+                    <div class="empty-state">
+                        <i class="fas fa-images"></i>
+                        <p>No recent generations</p>
+                        <p class="empty-state-subtitle">Your generated images will appear here</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="community-showcase">
+                <h2>Community Showcase</h2>
+                <div class="showcase-grid">
+                    <div class="showcase-item">
+                        <img src="https://image.pollinations.ai/prompt/A%20futuristic%20city%20with%20flying%20cars%20and%20neon%20lights,%20cyberpunk%20style?width=512&height=512&nologo=true" alt="Cyberpunk City">
+                        <div class="showcase-info">
+                            <h3>Cyberpunk City</h3>
+                            <p>by <span class="user">AIArtist</span></p>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="https://image.pollinations.ai/prompt/A%20magical%20forest%20with%20glowing%20plants%20and%20fantasy%20creatures?width=512&height=512&nologo=true" alt="Fantasy Forest">
+                        <div class="showcase-info">
+                            <h3>Fantasy Forest</h3>
+                            <p>by <span class="user">CreativeMind</span></p>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="https://image.pollinations.ai/prompt/A%20steampunk%20airship%20flying%20through%20clouds,%20detailed%20machinery?width=512&height=512&nologo=true" alt="Steampunk Airship">
+                        <div class="showcase-info">
+                            <h3>Steampunk Airship</h3>
+                            <p>by <span class="user">SteamDreamer</span></p>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="https://image.pollinations.ai/prompt/A%20surreal%20landscape%20with%20floating%20islands%20and%20waterfalls?width=512&height=512&nologo=true" alt="Surreal Landscape">
+                        <div class="showcase-info">
+                            <h3>Surreal Landscape</h3>
+                            <p>by <span class="user">DreamWeaver</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3>1. Describe Your Image</h3>
+                    <p>Enter a detailed description of the image you want to create. The more specific you are, the better the results.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>2. Choose Options</h3>
+                    <p>Select your preferred AI model and aspect ratio. Add style tags to enhance your results.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>3. Generate</h3>
+                    <p>Click the Generate button and watch as AI creates your image based on your description.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>4. Download & Share</h3>
+                    <p>Download your creation, save it to favorites, or share it with others.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="tips-section">
+        <div class="container">
+            <h2 class="section-title">Tips for Better Results</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Be Specific</h3>
+                    <p>Include details about style, lighting, colors, and composition in your prompt.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Add Art Styles</h3>
+                    <p>Mention specific art styles like "oil painting," "watercolor," or "digital art" for better results.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Camera Settings</h3>
+                    <p>Include terms like "8K resolution," "detailed," "sharp focus," or "cinematic lighting" for higher quality.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                    <h3>Iterate</h3>
+                    <p>If you don't get the perfect result, refine your prompt and try again with different settings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>AI<span>Agent</span></h2>
+                    <p>Powered by Gemini & Pollinations AI</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="text-generator.html">Text AI</a></li>
+                        <li><a href="image-generator.html">Image AI</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AIAgent. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Share Modal -->
+    <div id="share-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Share Your Creation</h2>
+            <div class="share-preview">
+                <img id="share-image-preview" src="" alt="Share Preview">
+            </div>
+            <div class="share-options">
+                <button class="share-btn facebook">
+                    <i class="fab fa-facebook"></i> Facebook
+                </button>
+                <button class="share-btn twitter">
+                    <i class="fab fa-twitter"></i> Twitter
+                </button>
+                <button class="share-btn pinterest">
+                    <i class="fab fa-pinterest"></i> Pinterest
+                </button>
+                <button class="share-btn reddit">
+                    <i class="fab fa-reddit"></i> Reddit
+                </button>
+            </div>
+            <div class="share-link">
+                <input type="text" id="share-link-input" readonly>
+                <button id="copy-link" class="btn btn-secondary">Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics-compat.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/image-generation.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

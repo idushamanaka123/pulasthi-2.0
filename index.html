@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulasthi 2.0 | AI Agent Powered by Gemini & Pollinations</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/pulasthi-logo.svg" alt="Pulasthi 2.0 Logo" height="32">
+                    <h1>Pulasthi<span>2.0</span></h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="text-generator.html">Text AI</a></li>
+                    <li><a href="image-generator.html">Image AI</a></li>
+                    <li class="user-dropdown logged-in" style="display: none;">
+                        <a href="#" class="user-menu">
+                            <img src="images/default-avatar.png" alt="User" class="user-avatar">
+                            <span class="user-name">User</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                    <li class="logged-out" style="display: none;"><a href="login.html">Login</a></li>
+                    <li class="logged-out" style="display: none;"><a href="register.html" class="btn btn-primary btn-sm">Sign Up</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Experience the Power of <span class="gradient-text">Pulasthi 2.0</span></h1>
+                <p>Interact with cutting-edge AI technology using Gemini for text generation and Pollinations AI for stunning image creation.</p>
+                <div class="cta-buttons">
+                    <a href="text-generator.html" class="btn btn-gradient">Try Text AI</a>
+                    <a href="image-generator.html" class="btn btn-secondary">Generate Images</a>
+                </div>
+            </div>
+            <div class="hero-image floating">
+                <img src="images/pulasthi-avatar.jpg" alt="Pulasthi 2.0" id="hero-img" class="pulse" style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover; border: 4px solid var(--primary-color);">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful <span class="gradient-text">AI Features</span></h2>
+            <div class="features-grid">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Gemini AI</h3>
+                    <p>Access Google's powerful Gemini AI for natural language understanding and generation.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Image Generation</h3>
+                    <p>Create stunning AI-generated images with Pollinations AI from simple text prompts.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Enjoy a seamless experience across all your devices with our fully responsive interface.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Real-time Results</h3>
+                    <p>Get instant AI-generated content with our optimized API integrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai-tools" class="ai-tools">
+        <div class="container">
+            <h2 class="section-title">Our <span class="gradient-text">AI Tools</span></h2>
+            <div class="tools-grid">
+                <div class="tool-card glass-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-comment-alt"></i>
+                    </div>
+                    <h3>Text Generation</h3>
+                    <p>Create high-quality content with Google's powerful Gemini AI model. Generate blog posts, emails, social media content, and more.</p>
+                    <a href="text-generator.html" class="btn btn-gradient">Try Text AI</a>
+                </div>
+                <div class="tool-card glass-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Image Generation</h3>
+                    <p>Create stunning AI-generated images from text descriptions using advanced AI models. Perfect for creative projects and design.</p>
+                    <a href="image-generator.html" class="btn btn-gradient">Try Image AI</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="user-features" class="user-features">
+        <div class="container">
+            <h2 class="section-title">User <span class="gradient-text">Features</span></h2>
+            <div class="user-features-grid">
+                <div class="user-feature glass-card">
+                    <div class="user-feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="user-feature-content">
+                        <h3>Save Generation History</h3>
+                        <p>Keep track of all your AI generations for future reference and reuse.</p>
+                    </div>
+                </div>
+                <div class="user-feature glass-card">
+                    <div class="user-feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="user-feature-content">
+                        <h3>Favorites Collection</h3>
+                        <p>Save your best generations to a favorites collection for quick access.</p>
+                    </div>
+                </div>
+                <div class="user-feature glass-card">
+                    <div class="user-feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="user-feature-content">
+                        <h3>Cloud Storage</h3>
+                        <p>All your data is securely stored in the cloud and accessible from any device.</p>
+                    </div>
+                </div>
+                <div class="user-feature glass-card">
+                    <div class="user-feature-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="user-feature-content">
+                        <h3>Customizable Settings</h3>
+                        <p>Personalize your experience with customizable settings and preferences.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="user-features-cta">
+                <a href="register.html" class="btn btn-gradient logged-out" style="display: none;">Create Free Account</a>
+                <a href="dashboard.html" class="btn btn-gradient logged-in" style="display: none;">Go to Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="themes" class="themes-section">
+        <div class="container">
+            <h2 class="section-title">Choose Your <span class="gradient-text">Theme</span></h2>
+            <p class="section-description">Customize your experience with multiple theme options. Select a theme that suits your style and mood.</p>
+            
+            <div class="themes-showcase">
+                <div class="theme-preview" data-theme="dark">
+                    <div class="theme-color dark"></div>
+                    <h3>Dark Mode</h3>
+                </div>
+                <div class="theme-preview" data-theme="cosmic">
+                    <div class="theme-color cosmic"></div>
+                    <h3>Cosmic Purple</h3>
+                </div>
+                <div class="theme-preview" data-theme="ocean">
+                    <div class="theme-color ocean"></div>
+                    <h3>Ocean Blue</h3>
+                </div>
+                <div class="theme-preview" data-theme="sunset">
+                    <div class="theme-color sunset"></div>
+                    <h3>Sunset Orange</h3>
+                </div>
+                <div class="theme-preview" data-theme="forest">
+                    <div class="theme-color forest"></div>
+                    <h3>Forest Green</h3>
+                </div>
+                <div class="theme-preview" data-theme="neon">
+                    <div class="theme-color neon"></div>
+                    <h3>Neon</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About <span class="gradient-text">Pulasthi 2.0</span></h2>
+            <div class="about-content glass-card">
+                <div class="about-text">
+                    <p>Pulasthi 2.0 is an advanced AI agent that integrates multiple AI technologies:</p>
+                    <ul>
+                        <li><strong>Gemini AI:</strong> Google's advanced language model for text generation</li>
+                        <li><strong>Pollinations AI:</strong> A powerful image generation service</li>
+                    </ul>
+                    <p>The website is built with modern web technologies and features a fully responsive design that works on all devices. The AI integrations use public APIs that require API keys for the Gemini service.</p>
+                    <p>This project showcases how AI can be integrated into web applications to create powerful tools for content creation and design.</p>
+                </div>
+                <div class="creators-section">
+                    <h3>Created By</h3>
+                    <div class="creators">
+                        <div class="creator">
+                            <div class="creator-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h4>Idusha Manaka</h4>
+                            <p>Lead Developer</p>
+                        </div>
+                        <div class="creator">
+                            <div class="creator-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h4>Sandakakulu Sililara</h4>
+                            <p>AI Specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/pulasthi-logo.svg" alt="Pulasthi 2.0 Logo" height="32">
+                    <h2>Pulasthi<span>2.0</span></h2>
+                    <p>Powered by Gemini & Pollinations AI</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="text-generator.html">Text AI</a></li>
+                        <li><a href="image-generator.html">Image AI</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pulasthi 2.0. Created by Idusha Manaka and Sandakakulu Sililara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics-compat.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/themes.js"></script>
+    <script src="js/script.js"></script>
+
+    <style>
+        /* Additional styles for the themes section */
+        .themes-section {
+            padding: 5rem 0;
+            background-color: var(--light-bg);
+        }
+        
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--light-text);
+        }
+        
+        .themes-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .theme-preview {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .theme-preview:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        .theme-color {
+            width: 100%;
+            height: 120px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .theme-color.cosmic {
+            background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
+        }
+        
+        .theme-color.ocean {
+            background: linear-gradient(135deg, #3498db 0%, #1abc9c 100%);
+        }
+        
+        .theme-color.sunset {
+            background: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);
+        }
+        
+        .theme-color.forest {
+            background: linear-gradient(135deg, #27ae60 0%, #f1c40f 100%);
+        }
+        
+        .theme-color.dark {
+            background: #121212;
+            border: 1px solid #333;
+        }
+        
+        .theme-color.neon {
+            background: linear-gradient(135deg, #00ffaa 0%, #ff00ff 100%);
+        }
+        
+        /* Creators section */
+        .creators-section {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .creators-section h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .creators-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-bg);
+        }
+        
+        .creators {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .creator {
+            text-align: center;
+        }
+        
+        .creator-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .creator h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .creator p {
+            color: var(--light-text);
+        }
+        
+        /* Theme preview click handler */
+        .theme-preview {
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .creators {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Theme preview click handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const themePreviewElements = document.querySelectorAll('.theme-preview');
+            
+            themePreviewElements.forEach(preview => {
+                preview.addEventListener('click', function() {
+                    const theme = this.getAttribute('data-theme');
+                    if (window.themeSystem) {
+                        window.themeSystem.setTheme(theme);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
