@@ -1,4 +1,4 @@
-// Text Generation Functionality for AI Agent Website
+// Text Generation Functionality for Pulasthi 2.0
 
 // Template definitions
 const TEMPLATES = {
@@ -348,6 +348,9 @@ class TextGenerator {
         if (apiKey) {
             localStorage.setItem('gemini-api-key', apiKey);
             showNotification('API key saved successfully!', 'success');
+            
+            // Clear the input for security
+            this.apiKeyInput.value = '';
         } else {
             showNotification('Please enter a valid API key', 'error');
         }
@@ -408,11 +411,11 @@ class TextGenerator {
                 // Save to history if user is logged in
                 if (firebase.auth().currentUser) {
                     this.saveToHistory(prompt, generatedText);
-                       
-                       // Also save as conversation for context-aware responses
-                       if (typeof saveConversation === "function") {
-                           saveConversation(prompt, generatedText);
-                       }
+                    
+                    // Also save as conversation for context-aware responses
+                    if (typeof saveConversation === "function") {
+                        saveConversation(prompt, generatedText);
+                    }
                 }
             } else {
                 throw new Error('Failed to generate text');
@@ -420,7 +423,7 @@ class TextGenerator {
         } catch (error) {
             console.error('Text generation error:', error);
             if (this.textOutput) {
-                this.textOutput.innerHTML = `<p class="error-text">Error: ${error.message}</p>`;
+                this.textOutput.innerHTML = `<p class="error-text">Error: ${error.message || 'Failed to generate text'}</p>`;
             }
             showNotification('Failed to generate text. Please check your API key and try again.', 'error');
         } finally {
@@ -496,7 +499,11 @@ class TextGenerator {
         // Add conversation history
         if (conversationHistory.length > 0) {
             // Sort by timestamp ascending
-            conversationHistory.sort((a, b) => a.timestamp - b.timestamp);
+            conversationHistory.sort((a, b) => {
+                const timestampA = a.timestamp?.toDate?.() || new Date(0);
+                const timestampB = b.timestamp?.toDate?.() || new Date(0);
+                return timestampA - timestampB;
+            });
             
             // Add each conversation as a user and model message
             conversationHistory.forEach(conv => {
@@ -562,8 +569,8 @@ class TextGenerator {
     displayGeneratedText(text) {
         if (!this.textOutput) return;
         
-        // Format the text with proper line breaks
-        const formattedText = text.replace(/\n/g, '<br>');
+        // Format the text with proper line breaks and markdown
+        const formattedText = this.formatMarkdown(text);
         this.textOutput.innerHTML = formattedText;
         
         // Enable action buttons
@@ -573,6 +580,36 @@ class TextGenerator {
         
         // Show success notification
         showNotification('Text generated successfully!', 'success');
+    }
+    
+    formatMarkdown(text) {
+        // Basic markdown formatting
+        let formatted = text
+            // Headers
+            .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+            .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+            .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+            .replace(/^#### (.*$)/gm, '<h4>$1</h4>')
+            // Bold
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            // Italic
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            // Lists
+            .replace(/^\s*\*\s(.*)$/gm, '<li>$1</li>')
+            .replace(/^\s*\d+\.\s(.*)$/gm, '<li>$1</li>')
+            // Code blocks
+            .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+            // Inline code
+            .replace(/`(.*?)`/g, '<code>$1</code>')
+            // Line breaks
+            .replace(/\n/g, '<br>');
+        
+        // Wrap lists in ul/ol tags
+        formatted = formatted
+            .replace(/<li>(.+?)(<br>)?<\/li>(\s*<li>)/g, '<li>$1</li>$3')
+            .replace(/(<li>(.+?)<\/li>)+/g, '<ul>$&</ul>');
+        
+        return formatted;
     }
     
     copyText() {
@@ -634,7 +671,7 @@ class TextGenerator {
             // Create download link
             const a = document.createElement('a');
             a.href = url;
-            a.download = `ai-generated-text-${Date.now()}.txt`;
+            a.download = `pulasthi-ai-text-${Date.now()}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -860,3 +897,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // Make it globally accessible
     window.textGenerator = textGenerator;
 });
+
+// Show notification function if not already defined
+if (typeof showNotification !== 'function') {
+    function showNotification(message, type = 'info') {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <p>${message}</p>
+            </div>
+        `;
+        
+        // Add to DOM
+        document.body.appendChild(notification);
+        
+        // Show notification
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        // Remove after delay
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+    }
+}

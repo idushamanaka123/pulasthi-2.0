@@ -273,29 +273,6 @@
                     passwordMatch.innerHTML = '<i class="fas fa-times-circle"></i> Passwords do not match';
                 }
             }
-            
-            // Form submission validation
-            if (registerForm) {
-                registerForm.addEventListener('submit', function(e) {
-                    const password = passwordInput.value;
-                    const confirmPassword = confirmPasswordInput.value;
-                    
-                    // Check if passwords match
-                    if (password !== confirmPassword) {
-                        e.preventDefault();
-                        showNotification('Passwords do not match', 'error');
-                        return;
-                    }
-                    
-                    // Check password requirements
-                    if (password.length < 8 || !/[A-Z]/.test(password) || 
-                        !/[a-z]/.test(password) || !/\d/.test(password)) {
-                        e.preventDefault();
-                        showNotification('Password does not meet requirements', 'error');
-                        return;
-                    }
-                });
-            }
         });
         
         // Check password strength
