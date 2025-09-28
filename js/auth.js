@@ -216,44 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
     firebase.auth().onAuthStateChanged(user => {
         updateUIForAuthState(user);
     });
-    
-    // Google Sign In Function
-    function signInWithGoogle(provider) {
-        firebase.auth().signInWithPopup(provider)
-            .then((result) => {
-                const user = result.user;
-                const isNewUser = result.additionalUserInfo.isNewUser;
-                
-                if (isNewUser) {
-                    // Create new user document
-                    return db.collection('users').doc(user.uid).set({
-                        name: user.displayName,
-                        email: user.email,
-                        photoURL: user.photoURL,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                        savedPrompts: [],
-                        generationHistory: [],
-                        settings: {
-                            defaultImageModel: 'prompthero-openjourney',
-                            saveHistory: true,
-                            theme: 'cosmic'
-                        }
-                    });
-                }
-            })
-            .then(() => {
-                showNotification('Login successful! Redirecting...', 'success');
-                
-                // Redirect to dashboard
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1500);
-            })
-            .catch((error) => {
-                console.error('Google sign in error:', error);
-                showNotification('Google sign in failed. Please try again.', 'error');
-            });
-    }
 });
 
 // Check password strength
@@ -385,6 +347,44 @@ function updateUIForAuthState(user) {
     }
 }
 
+// Google Sign In Function
+function signInWithGoogle(provider) {
+    firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            const user = result.user;
+            const isNewUser = result.additionalUserInfo.isNewUser;
+            
+            if (isNewUser) {
+                // Create new user document
+                return db.collection('users').doc(user.uid).set({
+                    name: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    savedPrompts: [],
+                    generationHistory: [],
+                    settings: {
+                        defaultImageModel: 'prompthero-openjourney',
+                        saveHistory: true,
+                        theme: 'cosmic'
+                    }
+                });
+            }
+        })
+        .then(() => {
+            showNotification('Login successful! Redirecting...', 'success');
+            
+            // Redirect to dashboard
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1500);
+        })
+        .catch((error) => {
+            console.error('Google sign in error:', error);
+            showNotification('Google sign in failed. Please try again.', 'error');
+        });
+}
+
 // Load user theme preference
 function loadUserTheme(userId) {
     if (!db) return;
@@ -397,6 +397,8 @@ function loadUserTheme(userId) {
                     // Apply user's theme preference if theme system is available
                     if (window.themeSystem) {
                         window.themeSystem.setTheme(userData.settings.theme);
+                    } else {
+                        document.documentElement.setAttribute('data-theme', userData.settings.theme);
                     }
                 }
             }
@@ -404,4 +406,34 @@ function loadUserTheme(userId) {
         .catch(error => {
             console.error('Error loading user theme:', error);
         });
+}
+
+// Show notification function if not already defined
+if (typeof showNotification !== 'function') {
+    function showNotification(message, type = 'info') {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <p>${message}</p>
+            </div>
+        `;
+        
+        // Add to DOM
+        document.body.appendChild(notification);
+        
+        // Show notification
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        // Remove after delay
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+    }
 }
