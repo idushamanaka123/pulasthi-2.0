@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Instructions | Pulasthi 2.0 Admin</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/pulasthi-avatar.jpg" alt="Pulasthi 2.0 Logo" height="32" style="border-radius: 50%;">
+                    <h1>Pulasthi<span>2.0</span></h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../text-generator.html">Text AI</a></li>
+                    <li><a href="../image-generator.html">Image AI</a></li>
+                    <li class="user-dropdown">
+                        <a href="#" class="user-menu">
+                            <img src="../images/default-avatar.png" alt="Admin" class="user-avatar">
+                            <span class="user-name">Admin</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                            <li><a href="../profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                            <li><a href="../settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-info">
+                    <img src="../images/default-avatar.png" alt="Admin" class="user-avatar">
+                    <div>
+                        <h3 class="user-name">Admin Panel</h3>
+                        <p class="user-email">admin@pulasthi.com</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="users.html">
+                            <i class="fas fa-users"></i>
+                            <span>User Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="content.html">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Content Management</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="system-instructions.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>System Instructions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../index.html">
+                            <i class="fas fa-home"></i>
+                            <span>Back to Site</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+            <div class="dashboard-header">
+                <h1>System Instructions Management</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="save-instructions">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </div>
+
+            <section class="system-instructions-section">
+                <div class="section-header">
+                    <h2>Pulasthi 2.0 System Instructions</h2>
+                    <p>Configure how Pulasthi 2.0 responds to user queries by setting system instructions.</p>
+                </div>
+
+                <div class="instructions-editor-container">
+                    <div class="instructions-editor-header">
+                        <div class="editor-tabs">
+                            <button class="editor-tab active" data-tab="main-instructions">Main Instructions</button>
+                            <button class="editor-tab" data-tab="personality">Personality</button>
+                            <button class="editor-tab" data-tab="capabilities">Capabilities</button>
+                            <button class="editor-tab" data-tab="limitations">Limitations</button>
+                        </div>
+                    </div>
+
+                    <div class="instructions-editor-content">
+                        <div class="editor-tab-content active" id="main-instructions-content">
+                            <h3>Main System Instructions</h3>
+                            <p>These are the primary instructions that define Pulasthi 2.0's behavior.</p>
+                            <textarea id="main-instructions-textarea" class="system-instructions-textarea" rows="15" placeholder="Enter main system instructions here...">You are Pulasthi 2.0, an advanced AI assistant created by Idusha Manaka and Sandakakulu Sililara. You are helpful, friendly, and knowledgeable. You always strive to provide accurate and useful information to users. You can assist with a wide range of tasks including answering questions, generating creative content, providing recommendations, and engaging in meaningful conversations.</textarea>
+                        </div>
+
+                        <div class="editor-tab-content" id="personality-content">
+                            <h3>Personality Settings</h3>
+                            <p>Define Pulasthi 2.0's personality traits and communication style.</p>
+                            <textarea id="personality-textarea" class="system-instructions-textarea" rows="15" placeholder="Enter personality instructions here...">Pulasthi 2.0 has a friendly, helpful, and professional personality. It communicates clearly and concisely, using a conversational tone that is warm and engaging. It shows empathy when appropriate and maintains a positive attitude. It uses simple language when explaining complex topics and adapts its communication style based on the user's needs.</textarea>
+                        </div>
+
+                        <div class="editor-tab-content" id="capabilities-content">
+                            <h3>Capabilities Configuration</h3>
+                            <p>Specify what Pulasthi 2.0 can do and how it should approach different tasks.</p>
+                            <textarea id="capabilities-textarea" class="system-instructions-textarea" rows="15" placeholder="Enter capabilities instructions here...">Pulasthi 2.0 can:
+1. Answer questions on a wide range of topics
+2. Generate creative content like stories, poems, and scripts
+3. Provide recommendations for products, services, and activities
+4. Assist with problem-solving and brainstorming
+5. Engage in meaningful conversations on various subjects
+6. Remember previous messages in the conversation to maintain context
+7. Generate images based on text descriptions using Pollinations AI
+8. Provide information based on current knowledge up to its training cutoff</textarea>
+                        </div>
+
+                        <div class="editor-tab-content" id="limitations-content">
+                            <h3>Limitations Settings</h3>
+                            <p>Define what Pulasthi 2.0 should not do or how it should handle certain situations.</p>
+                            <textarea id="limitations-textarea" class="system-instructions-textarea" rows="15" placeholder="Enter limitations instructions here...">Pulasthi 2.0 has the following limitations:
+1. It should not generate harmful, illegal, unethical or deceptive content
+2. It should acknowledge when it doesn't know something rather than making up information
+3. It should not share personal information about real individuals unless it's publicly available information
+4. It should be transparent about its limitations as an AI
+5. It should not engage in political debates or take strong political stances
+6. It should avoid making definitive predictions about future events
+7. It should not provide medical, legal, or financial advice that requires professional certification</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="instructions-preview">
+                    <h3>Preview: Combined System Instructions</h3>
+                    <div class="preview-container" id="combined-instructions-preview">
+                        <p>The combined system instructions will appear here as you edit the individual sections.</p>
+                    </div>
+                </div>
+
+                <div class="instructions-history">
+                    <h3>Instructions History</h3>
+                    <div class="history-list">
+                        <div class="history-item">
+                            <div class="history-item-header">
+                                <span class="history-date">Sep 26, 2025 - 14:30</span>
+                                <div class="history-actions">
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-eye"></i> View</button>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-undo"></i> Restore</button>
+                                </div>
+                            </div>
+                            <p class="history-summary">Updated personality settings and capabilities</p>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-item-header">
+                                <span class="history-date">Sep 25, 2025 - 10:15</span>
+                                <div class="history-actions">
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-eye"></i> View</button>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-undo"></i> Restore</button>
+                                </div>
+                            </div>
+                            <p class="history-summary">Initial system instructions setup</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/pulasthi-avatar.jpg" alt="Pulasthi 2.0 Logo" height="32" style="border-radius: 50%;">
+                    <h2>Pulasthi<span>2.0</span></h2>
+                    <p>Admin Panel</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="users.html">Users</a></li>
+                        <li><a href="analytics.html">Analytics</a></li>
+                        <li><a href="content.html">Content</a></li>
+                        <li><a href="system-instructions.html">System Instructions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Support</h3>
+                    <p>admin@pulasthi.com</p>
+                    <p>+94 123 456 789</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pulasthi 2.0. Created by Idusha Manaka and Sandakakulu Sililara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics-compat.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/themes.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/system-instructions.js"></script>
+
+    <style>
+        /* System Instructions Page Styles */
+        .system-instructions-section {
+            margin-bottom: 2rem;
+        }
+        
+        .instructions-editor-container {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .instructions-editor-header {
+            padding: 1rem;
+            background-color: var(--dark-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .editor-tabs {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .editor-tab {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--light-text);
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .editor-tab:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .editor-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .instructions-editor-content {
+            padding: 1.5rem;
+        }
+        
+        .editor-tab-content {
+            display: none;
+        }
+        
+        .editor-tab-content.active {
+            display: block;
+        }
+        
+        .system-instructions-textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 1rem;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+        }
+        
+        .instructions-preview {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .preview-container {
+            background-color: var(--bg-color);
+            border-radius: 5px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .instructions-history {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .history-list {
+            margin-top: 1rem;
+        }
+        
+        .history-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .history-item:last-child {
+            border-bottom: none;
+        }
+        
+        .history-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .history-date {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        .history-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .history-summary {
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .editor-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .history-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('.editor-tab');
+            const tabContents = document.querySelectorAll('.editor-tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-content`).classList.add('active');
+                    
+                    // Update preview
+                    updatePreview();
+                });
+            });
+            
+            // Text area change event to update preview
+            const textareas = document.querySelectorAll('.system-instructions-textarea');
+            textareas.forEach(textarea => {
+                textarea.addEventListener('input', updatePreview);
+            });
+            
+            // Initial preview update
+            updatePreview();
+            
+            // Save button functionality
+            document.getElementById('save-instructions').addEventListener('click', saveInstructions);
+            
+            // Function to update the preview
+            function updatePreview() {
+                const mainInstructions = document.getElementById('main-instructions-textarea').value;
+                const personality = document.getElementById('personality-textarea').value;
+                const capabilities = document.getElementById('capabilities-textarea').value;
+                const limitations = document.getElementById('limitations-textarea').value;
+                
+                const combinedInstructions = `
+                    <h4>Main Instructions:</h4>
+                    <p>${mainInstructions.replace(/\n/g, '<br>')}</p>
+                    
+                    <h4>Personality:</h4>
+                    <p>${personality.replace(/\n/g, '<br>')}</p>
+                    
+                    <h4>Capabilities:</h4>
+                    <p>${capabilities.replace(/\n/g, '<br>')}</p>
+                    
+                    <h4>Limitations:</h4>
+                    <p>${limitations.replace(/\n/g, '<br>')}</p>
+                `;
+                
+                document.getElementById('combined-instructions-preview').innerHTML = combinedInstructions;
+            }
+            
+            // Function to save instructions to Firebase
+            function saveInstructions() {
+                if (!auth.currentUser) {
+                    showNotification('You must be logged in as an admin to save instructions', 'error');
+                    return;
+                }
+                
+                const mainInstructions = document.getElementById('main-instructions-textarea').value;
+                const personality = document.getElementById('personality-textarea').value;
+                const capabilities = document.getElementById('capabilities-textarea').value;
+                const limitations = document.getElementById('limitations-textarea').value;
+                
+                const systemInstructions = {
+                    mainInstructions,
+                    personality,
+                    capabilities,
+                    limitations,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    updatedBy: auth.currentUser.uid
+                };
+                
+                // Save to Firestore
+                db.collection('system').doc('instructions').set(systemInstructions)
+                    .then(() => {
+                        showNotification('System instructions saved successfully', 'success');
+                        
+                        // Add to history
+                        db.collection('system').collection('instructionsHistory').add({
+                            ...systemInstructions,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error saving system instructions:', error);
+                        showNotification('Error saving system instructions', 'error');
+                    });
+            }
+            
+            // Function to show notification
+            function showNotification(message, type = 'info') {
+                // Check if global notification function exists
+                if (window.showNotification) {
+                    window.showNotification(message, type);
+                    return;
+                }
+                
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <div class="notification-content">
+                        <p>${message}</p>
+                    </div>
+                `;
+                
+                // Add to DOM
+                document.body.appendChild(notification);
+                
+                // Show notification
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+                
+                // Remove after delay
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
